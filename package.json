@@ -1,0 +1,41 @@
+{
+  "name": "chatbottle-api-nodejs",
+  "version": "1.0.4",
+  "description": "ChatBottle API client for Node.js",
+  "main": "chatbottle.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "botkit": "^0.1.1",
+    "express": "^4.13.4",
+    "circular-json": "^0.3.0",
+    "lodash": "^4.12.0",
+    "node-uuid": "^1.4.7",
+    "request": "^2.72.0",
+    "request-promise": "^3.0.0",
+    "websocket": "^1.0.23"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chatbottle/chatbottle-api-nodejs"
+  },
+  "keywords": [
+    "bot",
+    "bots",
+    "chatbot",
+    "facebook messenger",
+    "slack",
+    "analytics",
+    "data",
+    "tools"
+  ],
+  "author": "chatbottle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chatbottle/chatbottle-api-nodejs/issues"
+  },
+  "homepage": "https://github.com/chatbottle/chatbottle-api-nodejs"
+}
