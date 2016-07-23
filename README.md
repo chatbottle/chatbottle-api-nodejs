@@ -1,4 +1,4 @@
-# [ChatBottle](https://chatbottle.co/) API for Messenger chatbots
+# [ChatBottle](https://chatbottle.co/) API for Node.js
 
 ChatBottle provides analytics and marketing tool for your chatbots
 
