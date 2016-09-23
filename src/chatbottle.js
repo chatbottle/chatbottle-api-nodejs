@@ -6,15 +6,14 @@ var _ = require('lodash');
 
 var VERSION = '1';
 
-function ChatBottleClient(token, botId, urlRoot, debug) {
+function ChatBottleClient(token, urlRoot, debug) {
     var that = this;
     that.token = token;
-    that.botId = botId;
     that.urlRoot = urlRoot;
     that.debug = debug;
 
     that.logIncoming = function (data) {
-        var url = that.urlRoot + botId + '/?token=' + that.token + '&direction=in';
+        var url = that.urlRoot + token + '/?' + 'direction=in';
 
         if (that.debug) {
             console.log('ChatBottle In: ' + url);
@@ -28,7 +27,7 @@ function ChatBottleClient(token, botId, urlRoot, debug) {
     };
 
     that.logOutgoing = function (data) {
-        var url = that.urlRoot + botId + '/?token=' + that.token + '&direction=out';
+        var url = that.urlRoot + token + '/?' + 'direction=out';
 
         if (that.debug) {
             console.log('ChatBottle Out: ' + url);
@@ -49,13 +48,13 @@ module.exports = function (chatBottleToken, botId, config) {
     if (!chatBottleToken) {
         throw new Error('YOU MUST SUPPLY A CHATBOTTLE TOKEN TO CHATBOTTLE!');
     }
-    var url = 'http://dev.api.chatbottle.co/v1/updates/';
+    var url = 'https://api.chatbottle.co/v2/updates/';
     var debug = false;
     if (config) {
         debug = config.debug;
     }
     return {
-        facebook: new ChatBottleClient(chatBottleToken, botId, url + 'messenger/', debug),
-        generic: new ChatBottleClient(chatBottleToken, botId, url, debug) 
+        facebook: new ChatBottleClient(chatBottleToken, url + 'messenger/', debug),
+        generic: new ChatBottleClient(chatBottleToken, url, debug) 
     };
 };

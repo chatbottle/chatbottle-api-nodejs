@@ -3,9 +3,6 @@
 if (!process.env.CHATBOTTLE_API_TOKEN) {
     throw new Error('"CHATBOTTLE_API_TOKEN" environment variable must be defined');
 }
-if (!process.env.CHATBOTTLE_BOTID) {
-    throw new Error('"CHATBOTTLE_BOTID" environment variable must be defined');
-}
 if (!process.env.FACEBOOK_VERIFY_TOKEN) {
     throw new Error('"FACEBOOK_VERIFY_TOKEN" environment variable must be defined');
 }
@@ -16,7 +13,7 @@ if (!process.env.FACEBOOK_PAGE_TOKEN) {
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
-const chatbottle = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN, process.env.CHATBOTTLE_BOTID,
+const chatbottle = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN,
     { debug: true }).facebook;
 
 const app = express();
