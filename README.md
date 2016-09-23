@@ -1,4 +1,4 @@
-# [ChatBottle](https://chatbottle.co/) - Make better chatbots with ChatBottle
+# [ChatBottle](https://chatbottle.co/) API for Node.js
 
 ChatBottle provides analytics and marketing tool for your chatbots
 
