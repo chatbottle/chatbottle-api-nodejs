@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{f1c84767-ffbc-4bf1-970d-4f17ac152d7b}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>src\facebook-example.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -16,8 +16,7 @@
     <StartWebBrowser>True</StartWebBrowser>
     <ScriptArguments>
     </ScriptArguments>
-    <Environment>CHATBOTTLE_API_TOKEN=79bc1e9c1e152ddccace522b96649c6adea398b6
-CHATBOTTLE_BOTID=573eb74ff210400438505235
+    <Environment>CHATBOTTLE_API_TOKEN=9eb21ef4607778142802f597b3b44a3c383847ae
 FACEBOOK_VERIFY_TOKEN=WebCallback
 FACEBOOK_PAGE_TOKEN=EAAWcmQs3QLEBABtmG6NlMgpu6G7ZBEAtXauxBoUcTrRmDkDDZARF7JY03nNmvKOwTe8MnM9jKpqeGNQNWNsjPoAkQcXvw4sNb5vwuLCctWZB6voQNJQE4m8jQ5hYKkGZCeCL3GllZCEI7fRPNvtbpYzGEg8SZC7LZB5FHz37mfGSwZDZD</Environment>
   </PropertyGroup>
@@ -33,10 +32,26 @@ FACEBOOK_PAGE_TOKEN=EAAWcmQs3QLEBABtmG6NlMgpu6G7ZBEAtXauxBoUcTrRmDkDDZARF7JY03nN
     <Folder Include="src" />
     <Folder Include="typings\" />
     <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\body-parser\" />
+    <Folder Include="typings\globals\circular-json\" />
+    <Folder Include="typings\globals\express\" />
+    <Folder Include="typings\globals\lodash\" />
+    <Folder Include="typings\globals\node-uuid\" />
     <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\request-promise\" />
+    <Folder Include="typings\globals\request\" />
+    <Folder Include="typings\globals\websocket\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\body-parser\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\circular-json\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\lodash\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node-uuid\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\request-promise\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\request\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\websocket\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
