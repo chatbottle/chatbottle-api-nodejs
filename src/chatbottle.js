@@ -13,7 +13,7 @@ function ChatBottleClient(token, urlRoot, debug) {
     that.debug = debug;
 
     that.logIncoming = function (data) {
-        var url = that.urlRoot + token + '/?' + 'direction=in';
+        var url = that.urlRoot + token + '/';
 
         if (that.debug) {
             console.log('ChatBottle In: ' + url);
@@ -24,23 +24,6 @@ function ChatBottleClient(token, urlRoot, debug) {
             method: 'POST',
             json: data
         });
-    };
-
-    that.logOutgoing = function (data) {
-        var url = that.urlRoot + token + '/?' + 'direction=out';
-
-        if (that.debug) {
-            console.log('ChatBottle Out: ' + url);
-            console.log(JSON.stringify(data, null, 2));
-        }
-        data = _.clone(data);
-        data.requestId = uuid.v4();
-        rp({
-            uri: url,
-            method: 'POST',
-            json: data
-        });
-        return data.requestId;
     };
 }
 

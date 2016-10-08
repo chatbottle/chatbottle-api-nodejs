@@ -1,13 +1,11 @@
 # [ChatBottle](https://chatbottle.co/) API for Node.js
 
-ChatBottle provides analytics and marketing tool for your chatbots
+ChatBottle is an engagement platform for your chatbots. 
+ChatBottle allows to send personalized notifications to segmented groups of users.
 
-The following platforms are currently supported:
+The following platforms are currently supported via the npm package:
 
 * [Facebook Messenger](http://developers.facebook.com)
-* [Telegram](https://core.telegram.org)
-* [Slack](http://api.slack.com)
-
 
 ## Setup Facebook
 
@@ -16,18 +14,19 @@ Create a free account at [https://chatbottle.co/](https://chatbottle.co/) and ge
 chatbottle is available via NPM.
 
 ```bash
-npm install --save chatbottle
+npm install --save chatbottle-api-nodejs
 ```
 
 Include chatbottle.
 
 ```javascript
-var chatbottle = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN, process.env.CHATBOTTLE_BOTID).facebook;
+var chatbottle = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN).facebook;
 ```
 
 Then log whenever your webhook is called
 
 ```javascript
+
 app.post(webHookPath, function (req, res) {
     chatbottle.logIncoming(req.body);
     const messagingEvents = req.body.entry[0].messaging;
@@ -46,7 +45,7 @@ app.post(webHookPath, function (req, res) {
                 }
             }
         };
-        const requestId = chatbottle.logOutgoing(requestData.json);
+  
         request(requestData);
     }
     res.sendStatus(200);
@@ -56,3 +55,5 @@ app.post(webHookPath, function (req, res) {
 That is it!
 
 For a complete example see: [facebook-example.js](https://github.com/chatbottle/chatbottle-api)
+
+Register on ChatBottle: [https://chatbottle.co/](https://chatbottle.co/)

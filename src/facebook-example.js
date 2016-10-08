@@ -46,7 +46,7 @@ app.post(webHookPath, function (req, res) {
                 }
             }
         };
-        const requestId = chatbottle.logOutgoing(requestData.json);
+  
         request(requestData);
     }
     res.sendStatus(200);
