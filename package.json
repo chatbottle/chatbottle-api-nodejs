@@ -1,6 +1,6 @@
 {
   "name": "chatbottle-api-nodejs",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "ChatBottle API client for Node.js",
   "main": "chatbottle.js",
   "dependencies": {
