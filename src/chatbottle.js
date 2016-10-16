@@ -27,7 +27,7 @@ function ChatBottleClient(token, urlRoot, debug) {
     };
 }
 
-module.exports = function (chatBottleToken, botId, config) {
+module.exports = function (chatBottleToken, config) {
     if (!chatBottleToken) {
         throw new Error('YOU MUST SUPPLY A CHATBOTTLE TOKEN TO CHATBOTTLE!');
     }
