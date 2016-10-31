@@ -6,13 +6,13 @@
     <ProjectGuid>{f1c84767-ffbc-4bf1-970d-4f17ac152d7b}</ProjectGuid>
     <ProjectHome />
     <ProjectView>ProjectFiles</ProjectView>
-    <StartupFile>src\facebook-example.js</StartupFile>
+    <StartupFile>src\import-example.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <NodeExeArguments>--harmony </NodeExeArguments>
+    <NodeExeArguments>--harmony</NodeExeArguments>
     <StartWebBrowser>True</StartWebBrowser>
     <ScriptArguments>
     </ScriptArguments>
@@ -23,6 +23,7 @@ FACEBOOK_PAGE_TOKEN=EAAWcmQs3QLEBABtmG6NlMgpu6G7ZBEAtXauxBoUcTrRmDkDDZARF7JY03nN
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="src\import-example.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Compile Include="src\chatbottle.js" />

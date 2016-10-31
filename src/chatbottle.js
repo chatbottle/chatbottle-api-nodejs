@@ -1,38 +1,44 @@
 'use strict';
-
 var rp = require('request-promise');
-var uuid = require('node-uuid');
-var _ = require('lodash');
+//var uuid = require('node-uuid');
+//var _ = require('lodash');
+
+function updatesClient(token, urlRoot) {
+    var that = this;
+    that.token = token;
+    that.urlRoot = urlRoot;
+    that.facebook = function () {
+        var self = this;
+        self.logIncoming = function (data) {
+            var url = that.urlRoot + 'updates/' + token + '/';
+            rp({
+                uri: url,
+                method: 'POST',
+                json: data
+            });
+        };
+    };
+}
 
 function ChatBottleClient(token, urlRoot, debug) {
     var that = this;
     that.token = token;
     that.urlRoot = urlRoot;
-    that.debug = debug;
+    rp.debug = true;
 
-    that.logIncoming = function (data) {
-        var url = that.urlRoot + token + '/';
-
-        if (that.debug) {
-            console.log('POST ' + url);
-            console.log(JSON.stringify(data, null, 2));
-        }
-        rp({
-            uri: url,
-            method: 'POST',
-            json: data
-        });
-    };
+    that.facebook = new updatesClient(token, urlRoot + 'messenger/');
+    that.telegram = new updatesClient(token, urlRoot + 'telegram/');
+    that.generic = new updatesClient(token, urlRoot);
 
     that.addUsers = function (users) {
         if (!users) {
             throw "users is required"
         }
-        if (!users.lenght == 0) {
+        if (users.length == 0) {
             throw "list of users is empty"
         }
 
-        for (var i; i < users.lenght; i++) {
+        for (var i = 0; i < users.length; i++) {
             var user = users[i];
             if (!user) {
                 throw "users[" + i + "] is null";
@@ -41,47 +47,46 @@ function ChatBottleClient(token, urlRoot, debug) {
             if (!user.id) {
                 throw "users[" + i + "].id is required";
             }
-        }
 
-        if (!user.attributes && !user.customAttributes && !user.sessions && !user.lastSessionTime) {
-            throw "users[" + i + "] is empty. attributes, customAttributes, sessions or lastSessionTime required";
+            if (!user.attributes && !user.customAttributes && !user.sessions && !user.lastSessionTime) {
+                throw "users[" + i + "] is empty. attributes, customAttributes, sessions or lastSessionTime required";
+            }
         }
-
-        var url = that.urlRoot + 'bots/' + token + '/users/';
-
-        if (that.debug) {
-            console.log('POST ' + url);
-            console.log(JSON.stringify(users, null, 2));
-        }
-        rp({
-            uri: url,
+        var uri = that.urlRoot + 'bots/' + token + '/users/';
+        var options = {
             method: 'POST',
-            json: data
-        });
+            uri: uri,
+            body: users,
+            json: true 
+        };
+
+        rp(options)
+            .then(function (parsedBody) {
+                // POST succeeded...
+            })
+            .catch(function (err) {
+                // POST failed...
+            });
     };
 
-    that.updateUser = function (userId, data) {
+    that.updateUser = function (userId, user) {
         if (!userId) {
             throw "userId is required"
         }
-        if (!data) {
-            throw "data is required"
+        if (!user) {
+            throw "user is required"
         }
 
-        if (!data.attributes && !data.customAttributes) {
+        if (!user.attributes && !user.customAttributes) {
             throw "both data.attributes or data.customAttributes cannot be null"
         }
 
         var url = that.urlRoot + 'bots/' + token + '/users/' + userId + "/";
 
-        if (that.debug) {
-            console.log('PUT ' + url);
-            console.log(JSON.stringify(data, null, 2));
-        }
         rp({
             uri: url,
             method: 'PUT',
-            json: data
+            json: user
         });
     };
 
@@ -96,13 +101,9 @@ function ChatBottleClient(token, urlRoot, debug) {
 
         var url = that.urlRoot + 'bots/' + token + '/users/' + userIds.join() + "/";
 
-        if (that.debug) {
-            console.log('DELETE ' + url);
-        }
         rp({
             uri: url,
-            method: 'DELETE',
-            json: data
+            method: 'DELETE'
         });
     };
 
@@ -113,25 +114,17 @@ function ChatBottleClient(token, urlRoot, debug) {
         that.deleteUsers([userId]);
     };
 
-    that.getUser = function (userId) {
+    that.getUser = function (userId, callback) {
         if (!userId) {
             throw "userId is required"
         }
 
         var url = that.urlRoot + 'bots/' + token + '/users/' + userId + "/";
 
-        if (that.debug) {
-            console.log('GET ' + url);
-        }
-
         var result;
-        rp({
-            uri: url,
-            method: 'GET',
-            json: data
-        }).then(function (response) {
-            result = response;
-        });
+        rp(url,{
+            method: 'GET'
+        }, null, callback);
 
         return result;
     };
@@ -156,15 +149,10 @@ function ChatBottleClient(token, urlRoot, debug) {
         if (offset) {
             url += '&size=' + size;
         }
-        if (that.debug) {
-            console.log('GET ' + url);
-        }
-
         var result;
         rp({
             uri: url,
-            method: 'GET',
-            json: data
+            method: 'GET'
         }).then(function (response) {
             result = response;
         });
@@ -177,13 +165,10 @@ module.exports = function (chatBottleToken, config) {
     if (!chatBottleToken) {
         throw new Error('YOU MUST SUPPLY A CHATBOTTLE TOKEN TO CHATBOTTLE!');
     }
-    var url = 'https://api.chatbottle.co/v2/updates/';
+    var url = 'https://api.chatbottle.co/v2/';
     var debug = false;
     if (config) {
         debug = config.debug;
     }
-    return {
-        facebook: new ChatBottleClient(chatBottleToken, url + 'messenger/', debug),
-        generic: new ChatBottleClient(chatBottleToken, url, debug)
-    };
+    return new ChatBottleClient(chatBottleToken, url, debug);
 };
