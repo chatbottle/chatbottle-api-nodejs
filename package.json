@@ -1,26 +1,25 @@
 {
   "name": "chatbottle-api-nodejs",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "ChatBottle API client for Node.js",
   "main": "chatbottle.js",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "botkit": "^0.1.1",
-    "express": "^4.13.4",
     "circular-json": "^0.3.0",
+    "express": "^4.13.4",
     "lodash": "^4.12.0",
     "node-uuid": "^1.4.7",
     "request": "^2.72.0",
     "request-promise": "^3.0.0",
     "websocket": "^1.0.23"
   },
-  "devDependencies": {},
+  "devDependencies": { },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chatbottle/chatbottle-api-nodejs"
+    "url": "git://github.com/chatbottle/chatbottle-api.git"
   },
   "keywords": [
     "bot",
@@ -37,5 +36,5 @@
   "bugs": {
     "url": "https://github.com/chatbottle/chatbottle-api-nodejs/issues"
   },
-  "homepage": "https://github.com/chatbottle/chatbottle-api-nodejs"
+  "homepage": "https://chatmetrics.io/"
 }
