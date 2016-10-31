@@ -1,1 +1,1 @@
-c:\storage\projects\chatbottle-api-nodejs\bin\Microsoft.NodejsTools.WebRole.dll
+C:\storage\projects\chatbottle-api-nodejs\bin\Microsoft.NodejsTools.WebRole.dll

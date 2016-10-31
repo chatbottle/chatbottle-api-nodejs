@@ -1,10 +1,4 @@
-# Dependency directory
-node_modules
-
-#webstorm config
-.idea
-
-
-npm-debug.log
-
-commands
+node_modules/
+typings/
+obj/
+bin/
