@@ -229,7 +229,7 @@ function ChatBottleClient(token, urlRoot, config) {
     if (!userId) {
       throw new Error('userId is required');
     }
-    return that.deleteUser([userId]);
+    return that.deleteUsers([userId]);
   };
 
   /**
