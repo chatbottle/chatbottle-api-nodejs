@@ -1,6 +1,6 @@
 {
   "name": "chatbottle-api-nodejs",
-  "version": "1.0.23",
+  "version": "2.0.0",
   "description": "ChatBottle API client for Node.js",
   "main": "src/chatbottle.js",
   "files": [
