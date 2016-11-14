@@ -118,7 +118,7 @@ function ChatBottleClient(token, urlRoot, config) {
       json: prepareBody(data),
     })
       .catch((error) => {
-        console.error('ChatBottle:log:request', error);
+        console.error('ChatBottle:log:request', error.message);
       });
   };
 
@@ -160,7 +160,7 @@ function ChatBottleClient(token, urlRoot, config) {
 
     return rp(options)
       .catch((error) => {
-        console.error('ChatBottle:addUsers', error);
+        console.error('ChatBottle:addUsers', error.message);
       });
   };
 
@@ -190,7 +190,7 @@ function ChatBottleClient(token, urlRoot, config) {
       json: user,
     })
       .catch((error) => {
-        console.error('ChatBottle:updateUser', error);
+        console.error('ChatBottle:updateUser', error.message);
       });
   };
 
@@ -216,7 +216,7 @@ function ChatBottleClient(token, urlRoot, config) {
       json: true,
     })
       .catch((error) => {
-        console.error('ChatBottle:deleteUsers', error);
+        console.error('ChatBottle:deleteUsers', error.message);
       });
   };
 
@@ -250,7 +250,7 @@ function ChatBottleClient(token, urlRoot, config) {
       json: true,
     })
       .catch((error) => {
-        console.error('ChatBottle:getUser', error);
+        console.error('ChatBottle:getUser', error.message);
       });
   };
 
@@ -285,7 +285,7 @@ function ChatBottleClient(token, urlRoot, config) {
       json: true,
     })
       .catch((error) => {
-        console.error('ChatBottle:getUsers', error);
+        console.error('ChatBottle:getUsers', error.message);
       });
   };
 }
