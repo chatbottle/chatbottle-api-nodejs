@@ -20,8 +20,8 @@ npm install --save chatbottle-api-nodejs
 Include chatbottle and create instance for each platform (if you have mor than one).
 
 ```javascript
-const chatbottleMessenger = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN_MESSENGER, { platform: 'messenger' });
-const chatbottleLine = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN_LINE, { platform: 'line' });
+const chatbottleMessenger = require('chatbottle-api-nodejs')(process.env.CHATBOTTLE_API_TOKEN_MESSENGER, { platform: 'messenger' });
+const chatbottleLine = require('chatbottle-api-nodejs')(process.env.CHATBOTTLE_API_TOKEN_LINE, { platform: 'line' });
 ...
 ```
 
@@ -33,7 +33,7 @@ You can enable debugging in the second parameter `config` if you have problems.
 //    debug => see every outgoing data,
 //    debugRequest => to set the request-promise library to debug
 //  }
-const chatbottleMessenger = require('./chatbottle')(process.env.CHATBOTTLE_API_TOKEN_MESSENGER, { platform: 'messenger', debug: true, debugRequest: true });
+const chatbottleMessenger = require('chatbottle-api-nodejs')(process.env.CHATBOTTLE_API_TOKEN_MESSENGER, { platform: 'messenger', debug: true, debugRequest: true });
 ```
 
 Then log whenever your webhook is called.
